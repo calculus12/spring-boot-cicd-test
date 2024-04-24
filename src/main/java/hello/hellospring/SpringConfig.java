@@ -12,12 +12,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringConfig {
 
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
-    }
-
-    private EntityManager em;
     @Bean
     MemberService memberService() {
         return new MemberService(memberRepository());
@@ -25,6 +19,6 @@ public class SpringConfig {
 
     @Bean
     MemberRepository memberRepository() {
-        return new JPAMemberRepository(em);
+        return new MemoryMemberRepository();
     }
 }
