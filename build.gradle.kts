@@ -31,3 +31,7 @@ tasks.withType<Test> {
 tasks.jar {
     enabled = false
 }
+
+tasks.register<Wrapper>("wrapper") {
+    gradleVersion = "4.1"
+}
