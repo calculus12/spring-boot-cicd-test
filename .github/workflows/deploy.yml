@@ -26,7 +26,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     
-    # (2) application.properties 설정
+	  # (2) application.properties 설정
     - uses : actions/checkout@v3
     - run: touch ./src/main/resources/application.properties
     - run: echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.properties
@@ -45,9 +45,9 @@ jobs:
 
     # (5) Gradle build (Test 제외)
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+      uses: gradle/gradle-build-action@v2.4.2
       with:
-        arguments: clean build -x test
+        arguments: build
 
     # (6) AWS 인증 (IAM 사용자 Access Key, Secret Key 활용)
     - name: Configure AWS credentials
